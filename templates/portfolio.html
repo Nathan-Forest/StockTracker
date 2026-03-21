@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Detail - Stock Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="/" class="back-link">← Back to Portfolios</a>
+            <h1 id="portfolio-name">Portfolio</h1>
+        </div>
+    </header>
+
+    <!-- Summary Cards -->
+    <section class="summary-section">
+        <div class="container">
+            <div class="summary-cards">
+                <div class="card">
+                    <h3>Total Cost</h3>
+                    <p class="amount" id="total-cost">$0.00</p>
+                </div>
+                <div class="card">
+                    <h3>Current Value</h3>
+                    <p class="amount balance" id="total-value">$0.00</p>
+                </div>
+                <div class="card">
+                    <h3>Gain/Loss</h3>
+                    <p class="amount" id="total-gain">$0.00</p>
+                </div>
+                <div class="card">
+                    <h3>Return %</h3>
+                    <p class="amount" id="total-percent">0.00%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="dashboard-grid">
+            <!-- Add Stock Form -->
+            <div class="panel">
+                <h2>➕ Add Stock</h2>
+                <form id="add-stock-form">
+                    <div class="form-group">
+                        <label for="symbol">Stock Symbol</label>
+                        <input type="text" id="symbol" required placeholder="e.g., AAPL">
+                    </div>
+                    <div class="form-group">
+                        <label for="shares">Shares</label>
+                        <input type="number" id="shares" step="0.01" required placeholder="e.g., 10">
+                    </div>
+                    <div class="form-group">
+                        <label for="purchase-price">Purchase Price ($)</label>
+                        <input type="number" id="purchase-price" step="0.01" required placeholder="e.g., 150.00">
+                    </div>
+                    <div class="form-group">
+                        <label for="purchase-date">Purchase Date</label>
+                        <input type="date" id="purchase-date" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Add Stock</button>
+                </form>
+            </div>
+
+            <!-- Portfolio Chart -->
+            <div class="panel">
+                <h2>📊 Holdings Distribution</h2>
+                <canvas id="portfolioChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Stocks Table -->
+        <div class="panel">
+            <h2>📈 Holdings</h2>
+            <div id="stocks-list" class="stocks-table">
+                <p class="empty-state">Loading stocks...</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const PORTFOLIO_ID = {{ portfolio_id }};
+    </script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

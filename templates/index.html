@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 Stock Portfolio Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>📊 Stock Portfolio Tracker</h1>
+        <p class="subtitle">Track your investments in real-time</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Create Portfolio Section -->
+        <section class="panel">
+            <h2>➕ Create New Portfolio</h2>
+            <form id="create-portfolio-form">
+                <div class="form-group">
+                    <label for="portfolio-name">Portfolio Name</label>
+                    <input type="text" id="portfolio-name" required placeholder="e.g., Tech Stocks">
+                </div>
+                <div class="form-group">
+                    <label for="portfolio-description">Description (optional)</label>
+                    <input type="text" id="portfolio-description" placeholder="e.g., Major tech companies">
+                </div>
+                <button type="submit" class="btn-primary">Create Portfolio</button>
+            </form>
+        </section>
+
+        <!-- Portfolios List -->
+        <section class="panel">
+            <h2>📁 Your Portfolios</h2>
+            <div id="portfolios-list" class="portfolios-grid">
+                <p class="empty-state">Loading portfolios...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
