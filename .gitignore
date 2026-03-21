@@ -1,11 +1,16 @@
 # Virtual environment
 venv/
+env/
 
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+*.egg
+*.egg-info/
+dist/
+build/
 
 # Database
 *.db
@@ -17,12 +22,13 @@ __pycache__/
 .idea/
 *.swp
 *.swo
+.DS_Store
 
 # OS
-.DS_Store
 Thumbs.db
 
-# Distribution
-dist/
-build/
-*.egg-info/
+# Logs
+*.log
+
+# Environment variables
+.env
