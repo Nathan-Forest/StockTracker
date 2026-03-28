@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  stocktracker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: stocktracker
+    ports:
+      - "5001:5001"
+    volumes:
+      - stocktracker-data:/app/data
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=sqlite:///data/stocks.db
+    restart: unless-stopped
+    networks:
+      - stocktracker-network
+
+networks:
+  stocktracker-network:
+    driver: bridge
+
+volumes:
+  stocktracker-data:

@@ -5,6 +5,12 @@ from services.portfolio_service import PortfolioService
 from data.db_manager import DatabaseManager
 from datetime import datetime
 from typing import Dict, List
+import os
+
+# Configuration for different environments
+PORT = int(os.environ.get('PORT', 5000))
+HOST = os.environ.get('HOST', '0.0.0.0')
+DEBUG = os.environ.get('FLASK_ENV', 'development') != 'production'
 
 # Initialize Flask app (like Program.cs in C#)
 app = Flask(__name__)
@@ -166,5 +172,6 @@ def get_price_history(portfolio_id: int):
 
 if __name__ == '__main__':
     print("🚀 Starting Stock Tracker Web Server...")
-    print("📊 Open http://localhost:5000 in your browser")
-    app.run(debug=True, port=5000)
+    print(f"📊 Open http://localhost:{PORT} in your browser")
+    print(f"🔧 Environment: {'Production' if not DEBUG else 'Development'}")
+    app.run(debug=DEBUG, host=HOST, port=PORT)

@@ -1,6 +1,8 @@
 # Virtual environment
 venv/
 env/
+ENV/
+.venv
 
 # Python
 __pycache__/
@@ -11,11 +13,15 @@ __pycache__/
 *.egg-info/
 dist/
 build/
+.Python
 
 # Database
 *.db
 *.db-shm
 *.db-wal
+*.db
+*.sqlite
+*.sqlite3
 
 # IDE
 .vscode/
@@ -26,9 +32,11 @@ build/
 
 # OS
 Thumbs.db
+.DS_Store
 
 # Logs
 *.log
 
 # Environment variables
 .env
+.env.local
